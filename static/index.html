@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chatbot</title>
+    <meta name="description" content="A sleek AI chatbot powered by OpenRouter">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Ambient background blobs -->
+        <div class="bg-blob blob-1"></div>
+        <div class="bg-blob blob-2"></div>
+        <div class="bg-blob blob-3"></div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <defs>
+                            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#a78bfa"/>
+                                <stop offset="100%" style="stop-color:#6366f1"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M12 2a10 10 0 0 1 7.38 16.75l.22 3.6a.6.6 0 0 1-.87.57l-3.12-1.65A10 10 0 1 1 12 2z"/>
+                    </svg>
+                </div>
+                <h1 class="header-title">Chatbot</h1>
+            </div>
+            <button class="btn-clear" id="clearBtn" title="New chat">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+                <span>New Chat</span>
+            </button>
+        </header>
+
+        <!-- Chat area -->
+        <main class="chat-area" id="chatArea">
+            <div class="welcome" id="welcome">
+                <div class="welcome-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="url(#grad2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <defs>
+                            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#a78bfa"/>
+                                <stop offset="100%" style="stop-color:#6366f1"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                        <line x1="9" y1="9" x2="9.01" y2="9"/>
+                        <line x1="15" y1="9" x2="15.01" y2="9"/>
+                    </svg>
+                </div>
+                <h2>What can I help you with?</h2>
+                <p>Ask me anything — I'm powered by AI and ready to assist.</p>
+                <div class="suggestions">
+                    <button class="suggestion" data-prompt="Explain quantum computing in simple terms">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                        Explain quantum computing
+                    </button>
+                    <button class="suggestion" data-prompt="Write a Python function to sort a list">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        Write a Python sort function
+                    </button>
+                    <button class="suggestion" data-prompt="What are some tips for better productivity?">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        Productivity tips
+                    </button>
+                </div>
+            </div>
+            <div class="messages" id="messages"></div>
+        </main>
+
+        <!-- Input area -->
+        <footer class="input-area">
+            <form class="input-form" id="chatForm">
+                <div class="input-wrapper">
+                    <textarea
+                        id="userInput"
+                        placeholder="Type your message..."
+                        rows="1"
+                        autocomplete="off"
+                    ></textarea>
+                    <button type="submit" class="btn-send" id="sendBtn" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </button>
+                </div>
+                <p class="disclaimer">AI can make mistakes. Verify important information.</p>
+            </form>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
