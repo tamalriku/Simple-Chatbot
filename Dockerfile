@@ -14,7 +14,8 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 # Copy application code
 COPY --chown=user . .
 
-# HF Spaces expects port 7860
-EXPOSE 7860
+# Default to 7860 (HF Spaces), override with $PORT on other platforms
+ENV PORT=7860
+EXPOSE $PORT
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD uvicorn main:app --host 0.0.0.0 --port $PORT
