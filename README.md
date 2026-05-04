@@ -1,3 +1,13 @@
+---
+title: Simple Chatbot
+emoji: 🤖
+colorFrom: indigo
+colorTo: purple
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # 🤖 Simple Chatbot
 
 A sleek, real-time AI chatbot built with **FastAPI** and vanilla **HTML/CSS/JS**, powered by [OpenRouter](https://openrouter.ai/) for free access to various AI models.
@@ -204,6 +214,77 @@ All dependencies are managed via `pyproject.toml` and locked in `uv.lock`. To ad
 ```bash
 uv add <package-name>
 ```
+
+---
+
+## ☁️ Deploying to Hugging Face Spaces
+
+You can deploy this chatbot for free on [Hugging Face Spaces](https://huggingface.co/spaces) using Docker.
+
+### 1. Create a Hugging Face Account
+
+Sign up at [huggingface.co/join](https://huggingface.co/join) if you don't have an account.
+
+### 2. Create a New Space
+
+1. Go to [huggingface.co/new-space](https://huggingface.co/new-space)
+2. Fill in:
+   - **Space name:** `simple-chatbot`
+   - **SDK:** Select **Docker**
+   - **Visibility:** Public or Private
+3. Click **Create Space**
+
+### 3. Set Your API Key as a Secret
+
+> ⚠️ **Do NOT push your `.env` file.** Use Space Secrets instead.
+
+1. In your Space, go to **Settings** → **Variables and secrets**
+2. Click **New secret**
+3. Set:
+   - **Name:** `OPENROUTER_API_KEY`
+   - **Value:** Your OpenRouter API key
+4. Save — HF automatically injects secrets as environment variables
+
+### 4. Push Your Code
+
+**Option A — Add HF as a remote (recommended if you already have a git repo):**
+
+```bash
+git remote add hf https://huggingface.co/spaces/YOUR_USERNAME/simple-chatbot
+git push hf main
+```
+
+**Option B — Clone and copy:**
+
+```bash
+git clone https://huggingface.co/spaces/YOUR_USERNAME/simple-chatbot
+# Copy your project files into the cloned repo
+cd simple-chatbot
+git add .
+git commit -m "Initial deployment"
+git push
+```
+
+> 💡 Replace `YOUR_USERNAME` with your Hugging Face username.
+
+### 5. Wait for Build & Go Live
+
+1. Visit `https://huggingface.co/spaces/YOUR_USERNAME/simple-chatbot`
+2. Watch the build logs under the **"Building"** status badge
+3. Once it shows **"Running"**, your chatbot is live at:
+
+```
+https://YOUR_USERNAME-simple-chatbot.hf.space
+```
+
+### Troubleshooting
+
+| Issue | Fix |
+|-------|-----|
+| Build fails on `requirements.txt` | Make sure the file is committed and not in `.dockerignore` |
+| "API key not found" crash | Verify the secret name is exactly `OPENROUTER_API_KEY` in Space Settings |
+| Port mismatch error | Ensure `app_port: 7860` in README frontmatter matches `EXPOSE 7860` in Dockerfile |
+| Space is sleeping | Free Spaces sleep after inactivity — visit the URL to wake it, or upgrade for persistent uptime |
 
 ---
 
