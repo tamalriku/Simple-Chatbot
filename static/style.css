@@ -572,3 +572,145 @@ body {
         align-items: center;
     }
 }
+
+/* ========================================
+   Agent / Tool Execution Styles
+   ======================================== */
+.tool-block {
+    margin: 12px 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: rgba(18, 18, 26, 0.4);
+    overflow: hidden;
+    transition: all var(--transition-fast);
+}
+
+.tool-block:hover {
+    border-color: rgba(99, 102, 241, 0.25);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.tool-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    user-select: none;
+}
+
+.tool-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.tool-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: var(--accent-purple);
+}
+
+.tool-status-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+}
+
+.tool-status-icon.running {
+    border: 2px solid var(--accent-purple);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.tool-status-icon.success {
+    color: #10b981; /* Emerald */
+}
+
+.tool-status-icon.error {
+    color: #ef4444; /* Red */
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.tool-toggle-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: transform var(--transition-fast);
+}
+
+.tool-block.collapsed .tool-toggle-icon {
+    transform: rotate(-90deg);
+}
+
+.tool-body {
+    padding: 12px 14px;
+    border-top: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.25);
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.8rem;
+    overflow-x: auto;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.tool-body::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+.tool-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+}
+
+.tool-block.collapsed .tool-body {
+    display: none;
+}
+
+.tool-arg-label {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+}
+
+.tool-arg-value {
+    color: var(--accent-blue);
+    margin-bottom: 12px;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.tool-output-label {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+}
+
+.tool-output-value {
+    color: var(--text-primary);
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
