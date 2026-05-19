@@ -9,8 +9,8 @@ pinned: false
 ---
 
 # 🤖 Simple Chatbot
-
 A sleek, real-time AI chatbot built with **FastAPI** and vanilla **HTML/CSS/JS**, powered by [OpenRouter](https://openrouter.ai/) for free access to various AI models.
+URL - https://huggingface.co/spaces/Tamal321/Simple-Chatbot
 
 ![Python](https://img.shields.io/badge/Python-3.13+-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.136+-009688?logo=fastapi&logoColor=white)
